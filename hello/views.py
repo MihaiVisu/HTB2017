@@ -28,10 +28,15 @@ def response(request):
     sid = SentimentIntensityAnalyzer()
 
     response = urllib2.urlopen("https://arduino-sticky-notes.herokuapp.com/twitter/"+str(request.GET['username'])+'/').read()
-    
+
     ss = sid.polarity_scores(response)
     mx = -1
     res = "neu"
+
+    ss['neg'] += ss['neu']/4
+    ss['pos'] += ss['neu']/4
+    ss['neu'] /= 2
+
     for k in ss:
         if ss[k] > mx and k != "compound":
             mx = ss[k]
