@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
     url(r'^db', hello.views.db, name='db'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^response/(?P<username>\w{0,50})/$', hello.views.response, name='user'),
+    url(r'^response(?P<username>\w{0,50})/$', hello.views.response),
 ]
