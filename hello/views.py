@@ -37,4 +37,4 @@ def response(request):
             mx = ss[k]
             res = k
 
-    return response + "\n" + res
+    return HttpResponse(response + "\n" + res)
