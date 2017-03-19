@@ -27,14 +27,17 @@ def db(request):
 def response(request):
     sid = SentimentIntensityAnalyzer()
 
-    response = urllib2.urlopen("https://arduino-sticky-notes.herokuapp.com/twitter/response/"+str(request.GET['username'])+'/').read()
-
-    ss = sid.polarity_scores(response)
-    mx = -1
-    res = "neu"
-    for k in ss:
-        if ss[k] > mx and k != "compound":
-            mx = ss[k]
-            res = k
-
-    return HttpResponse(response + "\n" + res)
+    if 'username' in request.GET:
+        return HttpResponse(request.GET['username'])
+    return HttpResponse("ADASDASDAS")
+    # response = urllib2.urlopen("https://arduino-sticky-notes.herokuapp.com/twitter/response/"+str(request.GET['username'])+'/').read()
+    #
+    # ss = sid.polarity_scores(response)
+    # mx = -1
+    # res = "neu"
+    # for k in ss:
+    #     if ss[k] > mx and k != "compound":
+    #         mx = ss[k]
+    #         res = k
+    #
+    # return HttpResponse(response + "\n" + res)
