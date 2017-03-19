@@ -27,7 +27,7 @@ def db(request):
 def response(request):
     sid = SentimentIntensityAnalyzer()
 
-    response = urllib2.urlopen("https://arduino-sticky-notes.herokuapp.com/twitter/response/"+request.get('username')).read()
+    response = urllib2.urlopen("https://arduino-sticky-notes.herokuapp.com/twitter/response/"+request.GET['username']).read()
 
     ss = sid.polarity_scores(response)
     mx = -1
