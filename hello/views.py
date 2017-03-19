@@ -3,6 +3,11 @@ from django.http import HttpResponse
 
 from .models import Greeting
 
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from nltk import tokenize
+
+import urllib2
+
 # Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
